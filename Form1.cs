@@ -66,8 +66,6 @@ namespace textreader
             Form activeChild = this.ActiveMdiChild;
             if (activeChild != null)
             {
-                try
-                {
                     TextBox tb = (TextBox)activeChild.ActiveControl;
 
                     saveFileDialog1.FileName = activeChild.Text;
@@ -84,15 +82,11 @@ namespace textreader
                         MessageBox.Show(ex.Message,
                             "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
-                }
-                catch
-                {
-                    MessageBox.Show("You need to select a RichTextBox.");
-                }
             }
-
-
-            
+            else
+            {
+                MessageBox.Show("Нет активного окна.");
+            }
         }
 
         private void сохранитьКакToolStripMenuItem_Click(object sender, EventArgs e)
@@ -100,8 +94,7 @@ namespace textreader
             Form activeChild = this.ActiveMdiChild;
             if (activeChild != null)
             {
-                try
-                {
+
                     TextBox tb = (TextBox)activeChild.ActiveControl;
 
                     saveFileDialog1.FileName = activeChild.Text;
@@ -121,11 +114,12 @@ namespace textreader
                             "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         }
                     }
-                }
-                catch
-                {
-                    MessageBox.Show("You need to select a RichTextBox.");
-                }
+
+
+            }
+            else
+            {
+                MessageBox.Show("Нет активного окна.");
             }
         }
     }
